@@ -7,6 +7,7 @@
 // (See http://www.boost.org/LICENSE_1_0.txt)
 
 #include <iostream>
+#include <mach/error.h>
 #include <mach/kern_return.h>
 #include <string>
 
