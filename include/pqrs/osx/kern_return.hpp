@@ -104,5 +104,9 @@ private:
 inline std::ostream& operator<<(std::ostream& stream, const kern_return& value) {
   return stream << value.to_string();
 }
+
+inline auto format_as(const kern_return& value) {
+  return value.to_string();
+}
 } // namespace osx
 } // namespace pqrs
