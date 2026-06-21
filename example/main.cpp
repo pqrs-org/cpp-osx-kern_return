@@ -1,6 +1,6 @@
 #include <pqrs/osx/kern_return.hpp>
 
-int main(void) {
+int main() {
   {
     pqrs::osx::kern_return r(KERN_SUCCESS);
     std::cout << r << std::endl;

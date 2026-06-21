@@ -1,20 +1,28 @@
 #include <IOKit/IOKitLib.h>
 #include <boost/ut.hpp>
 #include <pqrs/osx/kern_return.hpp>
+#include <sstream>
 
-int main(void) {
+int main() {
   using namespace boost::ut;
   using namespace boost::ut::literals;
 
   "kern_return"_test = [] {
     {
       pqrs::osx::kern_return r(KERN_SUCCESS);
+      expect(r.get() == KERN_SUCCESS);
       expect(r.to_string() == "KERN_SUCCESS");
       expect(r == true);
       expect(r.success() == true);
+      expect(format_as(r) == "KERN_SUCCESS");
+
+      std::stringstream stream;
+      stream << r;
+      expect(stream.str() == "KERN_SUCCESS");
     }
     {
       pqrs::osx::kern_return r(KERN_INVALID_ADDRESS);
+      expect(r.get() == KERN_INVALID_ADDRESS);
       expect(r.to_string() == "KERN_INVALID_ADDRESS");
       expect(r == false);
       expect(r.success() == false);
